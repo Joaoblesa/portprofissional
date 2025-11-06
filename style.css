@@ -1,81 +1,281 @@
-*{
-    padding: 0;
+/* --- 1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS CSS --- */
+* {
     margin: 0;
-    box-sizing: border-box; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
 }
 
-header {
-    border-bottom: 3px solid #000000;
-    padding-top: 40px; 
-    padding-bottom: 5px; 
-    margin-bottom: 25px;
+:root {
+    /* Paleta de Cores Frias e Sofisticadas (Roxo/Violeta) */
+    --color-bg-light: #f8faff; /* Fundo Muito Claro (Quase Branco com um toque azul) */
+    --color-primary-text: #1d1b32; /* Roxo Escuro (Texto Principal) */
+    --color-accent: #6c5ce7; /* Violeta Médio (Destaque Principal) */
+    --color-secondary-accent: #a29bfe; /* Roxo Claro (Acento Secundário) */
+    --color-card-bg: #ffffff; /* Fundo Branco Puro para Cartões */
+    --shadow-soft: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
-header h3 {
-    margin: 0; 
-    font-size: 1.2em;
-    font-family: sans-serif; 
-    color: #2e2c2c; 
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-primary-text);
+    min-height: 100vh;
 }
 
 main {
-    padding-left: 5%;
-    padding-right: 5%;
-    max-width: 1200px; 
-    margin: 0 auto; 
+    padding: 4% 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-main h1 {
-    font-size: 2.5em; 
-    color: #4a4a4a;
-    margin-bottom: 15px; 
+/* --- 2. HEADER E NAVEGAÇÃO --- */
+.header {
+    background-color: var(--color-card-bg);
+    padding: 20px 5%;
+    border-bottom: 4px solid var(--color-accent); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header nav span {
+    font-size: 1.7rem;
     font-weight: 700;
+    color: var(--color-primary-text);
 }
 
-main h2 {
-    font-size: 1.2em; 
-    color: #6a6a6a;
-    margin-bottom: 30px; 
-    font-weight: 400;
-}
-
-main li {
-    margin-bottom: 10px; 
-    font-size: 1em; 
-    color: #333;
-    padding-left: 5px; 
-}
-
-.Minha-foto {
-    width: 20%;
-}
-
-.Minha-foto img {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-}
-
+/* --- 3. SEÇÃO DE APRESENTAÇÃO (Hero Section) --- */
 .apresentacao-e-foto {
     display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
     justify-content: space-between;
+    align-items: center;
     gap: 50px;
-    margin-bottom: 40px; 
+    padding: 80px 0;
 }
 
-.texto-apresentacao {
-    width: 80%;
+.apresentacao-e-foto div:first-child {
+    max-width: 60%;
 }
 
-    
-.texto-apresentacao, .Minha-foto {
-        width: 100%;
+.apresentacao-e-foto h1 {
+    font-size: 3.2rem;
+    color: var(--color-primary-text);
+    margin-bottom: 15px;
+}
+
+.apresentacao-e-foto h1 strong {
+    color: var(--color-accent); 
+}
+
+.apresentacao-e-foto h2 {
+    font-size: 1.6rem;
+    color: var(--color-accent); /* Trocando a cor do h2 para o accent */
+    font-weight: 500;
+    margin-bottom: 35px;
+}
+
+.apresentacao-e-foto ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.apresentacao-e-foto ul li {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: var(--color-primary-text);
+    /* Efeito de destaque na lista */
+    border-left: 5px solid var(--color-secondary-accent);
+    padding-left: 15px;
+    background-color: #f7f7ff; /* Fundo muito leve para o item */
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Efeito na Foto */
+.Minha-foto img {
+    width: 300px; 
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px; 
+    border: 7px solid var(--color-secondary-accent); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+.Minha-foto img:hover {
+    transform: rotate(-3deg) scale(1.05);
+    border-color: var(--color-accent);
+}
+
+/* Separador de Seções */
+hr {
+    border: none;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, var(--color-accent), transparent);
+    margin: 50px 0;
+}
+
+/* --- 4. SEÇÃO DE HABILIDADES (Grid) --- */
+.Habilidades {
+    text-align: center;
+    padding: 50px 0 70px 0;
+}
+
+.Habilidades h1 {
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    color: var(--color-primary-text);
+    position: relative;
+}
+
+.Habilidades h1::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-accent);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+}
+
+.icon-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 15px;
+    border-radius: 10px;
+    background-color: var(--color-card-bg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.icon-pair:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3); /* Sombra roxa no hover */
+    border-color: var(--color-accent);
+}
+
+.icon-pair img {
+    width: 60px; 
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-primary-text);
+}
+
+/* --- 5. SEÇÃO DE PROJETOS --- */
+.Projetos {
+    padding: 50px 0;
+}
+
+.Projetos h1 {
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    color: var(--color-primary-text);
+    text-align: center;
+}
+
+.projeto-item {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 40px;
+    border-top: 5px solid var(--color-secondary-accent);
+}
+
+.projeto-item h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: var(--color-accent);
+}
+
+.projeto-item iframe {
+    width: 100%;
+    min-height: 650px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* --- 6. RODAPÉ --- */
+.rodape {
+    background-color: var(--color-primary-text);
+    color: var(--color-bg-light);
+    text-align: center;
+    padding: 30px 5%;
+}
+
+.rodape a {
+    color: var(--color-secondary-accent); 
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.rodape a:hover {
+    color: var(--color-accent);
+}
+
+.rodape ul {
+    list-style: none;
+    margin: 15px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* --- 7. MEDIA QUERY (Responsividade) --- */
+@media (max-width: 768px) {
+    .apresentacao-e-foto {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 0;
     }
 
-.Minha-foto {
-        order: -1;
+    .apresentacao-e-foto div:first-child {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .Minha-foto {
+        order: 1;
         margin-bottom: 20px;
     }
+    
+    .apresentacao-e-foto ul {
+        text-align: left;
+        padding-left: 0;
+    }
+    
+    .apresentacao-e-foto ul li {
+        margin-left: 0;
+    }
+
+    .apresentacao-e-foto h1 {
+        font-size: 2.2rem;
+    }
+
+    .Minha-foto img {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .icons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
